@@ -1,0 +1,16 @@
+trigger:
+  - main   # roda quando houver push na branch main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18.x'
+    displayName: 'Instalar Node.js'
+
+  - script: |
+      npm install
+      npx cypress run --browser chrome
+    displayName: 'Instalar dependências e rodar Cypress'
