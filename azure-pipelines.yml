@@ -1,8 +1,7 @@
 trigger:
   - main   # roda quando houver push na branch main
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: test-cypress
 
 steps:
   - task: NodeTool@0
