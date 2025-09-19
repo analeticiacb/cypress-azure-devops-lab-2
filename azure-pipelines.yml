@@ -13,3 +13,14 @@ steps:
       npm install
       npx cypress run --browser chrome
     displayName: 'Instalar dependências e rodar Cypress'
+
+  - script: |
+      npm install
+      npx cypress run --reporter junit --reporter-options "mochaFile=results/test-results.xml"
+    displayName: 'Rodar Cypress com JUnit Reporter'
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**/results/*.xml'
+      testRunTitle: 'Resultados Cypress'
+
